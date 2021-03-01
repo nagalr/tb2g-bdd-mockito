@@ -28,6 +28,8 @@ public class SpecialitySDJpaService implements SpecialtyService {
         return specialtyRepository.findById(aLong).orElse(null);
     }
 
+
+
     @Override
     public Speciality save(Speciality object) {
         return specialtyRepository.save(object);
