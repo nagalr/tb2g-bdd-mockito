@@ -115,7 +115,7 @@ class SpecialitySDJpaServiceTest {
         service.deleteById(1L);
 
         // then
-        then(specialtyRepository).should(times(2)).deleteById(anyLong());
+        then(specialtyRepository).should(atLeastOnce()).deleteById(anyLong());
     }
 
     @Test
@@ -124,6 +124,18 @@ class SpecialitySDJpaServiceTest {
         service.deleteById(1L);
 
         verify(specialtyRepository, atMost(5)).deleteById(1L);
+    }
+
+    @Test
+    void deleteByIDAtMostBDD() {
+        // given - none
+
+        // when
+        service.deleteById(1L);
+        service.deleteById(1L);
+
+        // then
+        then(specialtyRepository).should(atMost(2)).deleteById(anyLong());
     }
 
     @Test
