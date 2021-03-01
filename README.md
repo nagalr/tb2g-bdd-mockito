@@ -15,4 +15,3 @@ Questions and help:
 
 GitHub-Issues will not be addressed.
 
-Thank you. 
