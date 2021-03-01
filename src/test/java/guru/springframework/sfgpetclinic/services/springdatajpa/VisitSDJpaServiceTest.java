@@ -128,6 +128,18 @@ class VisitSDJpaServiceTest {
     }
 
     @Test
+    void deleteBDD() {
+        // given
+        Visit visit = new Visit();
+
+        // when
+        service.delete(visit);
+
+        // then
+        then(visitRepository).should(times(1)).delete(any(Visit.class));
+    }
+
+    @Test
     void deleteById() {
 
         service.deleteById(1L);
