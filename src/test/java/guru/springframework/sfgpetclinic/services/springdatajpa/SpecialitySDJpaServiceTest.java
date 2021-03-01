@@ -165,4 +165,15 @@ class SpecialitySDJpaServiceTest {
     void testDelete() {
         service.delete(new Speciality());
     }
+
+    @Test
+    void testDeleteBDD() {
+        // given - none
+
+        // when
+        service.delete(new Speciality());
+
+        // then
+        then(specialtyRepository).should(times(1)).delete(any(Speciality.class));
+    }
 }
