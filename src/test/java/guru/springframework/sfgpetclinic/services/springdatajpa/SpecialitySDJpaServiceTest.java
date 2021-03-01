@@ -107,7 +107,7 @@ class SpecialitySDJpaServiceTest {
     }
 
     @Test
-    void deleteByIDAtLeastBD() {
+    void deleteByIDAtLeastBDD() {
         // give - none
 
         // when
