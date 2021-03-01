@@ -146,4 +146,15 @@ class VisitSDJpaServiceTest {
 
         verify(visitRepository).deleteById(anyLong());
     }
+
+    @Test
+    void deleteByIdBDD() {
+        // given - none
+
+        // when
+        service.deleteById(1L);
+
+        // then
+        then(visitRepository).should(times(1)).deleteById(anyLong());
+    }
 }
