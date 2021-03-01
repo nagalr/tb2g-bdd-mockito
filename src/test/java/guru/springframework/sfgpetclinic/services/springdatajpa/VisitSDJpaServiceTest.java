@@ -105,6 +105,19 @@ class VisitSDJpaServiceTest {
     }
 
     @Test
+    void saveBDD() {
+        // given
+        Visit visit = new Visit();
+        given(visitRepository.save(any(Visit.class))).willReturn(visit);
+
+        // when
+        Visit returnedVisit = service.save(visit);
+
+        // then
+        assertThat(returnedVisit).isNotNull();
+    }
+
+    @Test
     void delete() {
         Visit visit = new Visit();
 
