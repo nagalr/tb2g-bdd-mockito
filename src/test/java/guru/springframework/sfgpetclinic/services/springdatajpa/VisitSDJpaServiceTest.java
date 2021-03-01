@@ -16,8 +16,9 @@ import java.util.Set;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.BDDMockito.then;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class VisitSDJpaServiceTest {
@@ -47,6 +48,22 @@ class VisitSDJpaServiceTest {
     }
 
     @Test
+    void findAllBDD() {
+        // given
+        Visit visit = new Visit();
+        Set<Visit> visits = new HashSet<>();
+        given(service.findAll()).willReturn(visits);
+
+
+        // when
+        Set<Visit> returnedVisits = service.findAll();
+
+        // then
+        then(visitRepository).should(times(1)).findAll();
+        assertThat(returnedVisits).isNotNull();
+    }
+
+    @Test
     void findById() {
         Visit visit = new Visit();
 
@@ -57,6 +74,21 @@ class VisitSDJpaServiceTest {
         verify(visitRepository).findById(anyLong());
 
         assertThat(foundVisit).isNotNull();
+    }
+
+
+    @Test
+    void findByIdBDD() {
+        // given
+        Visit visit = new Visit();
+        given(visitRepository.findById(anyLong())).willReturn(Optional.of(visit));
+
+        // when
+        Visit returnedVisit = service.findById(1L);
+
+        // then
+        then(visitRepository).should(times(1)).findById(1L);
+        assertThat(returnedVisit).isNotNull();
     }
 
     @Test
