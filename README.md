@@ -9,8 +9,10 @@ This source code repository contains JUnit 5 and Mockito BDD test examples with 
 * Use Maven 3.5.2 or higher
 
 ## Support
-For questions and help:
+Questions and help:
 * Please post in course
 * Or post in the Slack Community exclusive to the course.
 
 GitHub-Issues will not be addressed.
+
+Thank you. 
