@@ -93,4 +93,5 @@ class VisitSDJpaServiceTest {
         //then
         then(visitRepository).should().deleteById(anyLong());
     }
+
 }
