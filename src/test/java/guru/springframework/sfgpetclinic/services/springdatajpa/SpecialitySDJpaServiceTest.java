@@ -12,9 +12,7 @@ import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.BDDMockito.given;
-import static org.mockito.BDDMockito.then;
-import static org.mockito.Mockito.*;
+import static org.mockito.BDDMockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class SpecialitySDJpaServiceTest {
@@ -110,10 +108,24 @@ class SpecialitySDJpaServiceTest {
 
     @Test
     void testDoThrow() {
+
+        // Mockito throws
         doThrow(new RuntimeException("boom")).when(specialtyRepository).delete(any());
 
+        // JUnit code
         assertThrows(RuntimeException.class, () -> specialtyRepository.delete(new Speciality()));
 
         verify(specialtyRepository).delete(any());
+    }
+
+    @Test
+    void testDoThroeBDD() {
+        // given - none
+
+        // when
+        willThrow(new RuntimeException("booom")).given(specialtyRepository).delete(any());
+
+        // then
+        assertThrows(RuntimeException.class, () -> specialtyRepository.delete(any()));
     }
 }
