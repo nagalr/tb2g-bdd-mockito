@@ -119,7 +119,7 @@ class SpecialitySDJpaServiceTest {
     }
 
     @Test
-    void testDoThroeBDD() {
+    void testDoThrowBDD() {
         // given - none
 
         // when
