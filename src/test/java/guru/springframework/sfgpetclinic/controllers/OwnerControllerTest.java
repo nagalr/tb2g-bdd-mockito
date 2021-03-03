@@ -23,6 +23,9 @@ import static org.mockito.Mockito.verify;
 @ExtendWith(MockitoExtension.class)
 class OwnerControllerTest {
 
+    private static final String OWNERS_CREATE_OR_UPDATE_OWNER_FORM = "owners/createOrUpdateOwnerForm";
+    private static final String REDIRECT_OWNERS_5 = "redirect:/owners/5";
+
     @Mock
     private OwnerService ownerService;
 
@@ -41,7 +44,7 @@ class OwnerControllerTest {
     void processCreationFormHasErrors() {
         given(bindingResult.hasErrors()).willReturn(Boolean.TRUE);
         String result = ownerController.processCreationForm(owner, bindingResult);
-        assertEquals("owners/createOrUpdateOwnerForm", result);
+        assertEquals(OWNERS_CREATE_OR_UPDATE_OWNER_FORM, result);
     }
 
     @Test
@@ -55,7 +58,7 @@ class OwnerControllerTest {
 
         // then
         assertThat(savedOwner).isNotNull();
-        assertEquals("redirect:/owners/5", result);
+        assertEquals(REDIRECT_OWNERS_5, result);
         verify(ownerService, times(1)).save(any());
     }
 }
